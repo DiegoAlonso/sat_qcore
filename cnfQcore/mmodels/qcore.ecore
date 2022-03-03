@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="qcore" nsURI="http://dsie.upct.es/lsi/qcore" nsPrefix="qcore">
+  <eClassifiers xsi:type="ecore:EClass" name="Circuit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qbits" lowerBound="1" upperBound="-1"
+        eType="#//Qbit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datastore" upperBound="-1"
+        eType="#//DataStore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="has" upperBound="-1" eType="#//Slice"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Qbit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataStore">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Slice" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequencenumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QSlice" eSuperTypes="#//Slice">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" lowerBound="1"
+        upperBound="-1" eType="#//Operation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Barrier" eSuperTypes="#//Slice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="param" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Gate" abstract="true" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qbit" lowerBound="1" eType="#//Qbit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NOT" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="H" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Measure" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="#//DataStore"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measuredqubit" lowerBound="1"
+        eType="#//Qbit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlledOperation" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
+        upperBound="-1" eType="#//Gate" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controls" upperBound="-1"
+        eType="#//ControlItem" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OnTrue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlqbit" lowerBound="1"
+        eType="#//Qbit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reset" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qubitreset" lowerBound="1"
+        eType="#//Qbit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identity" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Z" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Tdg" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Sdg" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RootX" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Y" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rx" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ry" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="P" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rz" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rxx" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rzz" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rxdg" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="S" eSuperTypes="#//Gate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SWP" eSuperTypes="#//Gate">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qbitswp" lowerBound="1"
+        eType="#//Qbit"/>
+  </eClassifiers>
+</ecore:EPackage>

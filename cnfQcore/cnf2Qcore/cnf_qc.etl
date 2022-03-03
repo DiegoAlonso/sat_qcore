@@ -1,0 +1,258 @@
+pre {
+	var emfTools : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+	var scratch_int : Integer = 1;
+	var seq_qbits  = gen_qubits ();
+	var seq_slice : Integer = 1;
+	var scratch_qbits : Bag;
+	var sat_circuit : Bag;
+	var measure_qslice : output!QSlice;
+}
+
+
+operation hadamard_input_qbits() : output!QSlice {
+	var tmp : output!QSlice = new output!QSlice;
+	tmp.sequencenumber = 0;
+	var qbits = gen_qubits ();
+	for (i  in qbits) {
+		var H : output!H = new output!H;
+		H.qbit = i;
+		tmp.includes.add(H);
+	}
+	return tmp;
+}
+
+@cached
+operation String gen_unique_qbit () : output!Qbit {
+    var tmp : output!Qbit = new output!Qbit;
+    tmp.id = self;
+    return tmp;
+}
+
+@cached
+operation gen_qubits () : Sequence {
+	var tmp : Set;
+	input!Atom.allInstances.forEach(i | tmp.add( i.name.gen_unique_qbit() ));
+	var tmp2 = tmp.sortBy (i | i.id.asInteger());
+	return tmp2;
+}
+
+@cached 
+operation the_circuit() : output!Circuit { 
+	return output!Circuit.allOfType.first();
+}
+
+$pre not self.isNegated
+operation input!Atom gen_not() : output!NOT {
+	var tmp : output!NOT = new output!NOT;
+    tmp.qbit = self.name.gen_unique_qbit();
+    return tmp;
+}
+
+
+operation input!Atom gen_controlIt() : output!ControlItem {
+	var tmp : output!ControlItem = new output!ControlItem;
+    tmp.controlqbit = self.name.gen_unique_qbit();
+    return tmp;
+}
+
+@cached
+operation input!Clause not_all_atoms_negated() : Boolean {
+    return self.atoms.exists(i | not i.isNegated);
+}
+
+operation phase_flip () : output!QSlice {
+    var tmp : output!QSlice = new output!QSlice;
+    tmp.sequencenumber = seq_slice;
+	seq_slice++;
+	var or_op = new output!ControlledOperation;
+	var z = new output!Z;
+	z.qbit = scratch_qbits.last().controlqbit;
+	or_op.targets.add(z);
+	scratch_qbits.select(i | i != scratch_qbits.last()).forEach(i | or_op.controls.add(i));
+	tmp.includes.add(or_op);
+    return tmp;
+}
+
+
+rule Root
+    transform i : input!LogicalEquation_CNF
+    to o : output!Circuit 
+       , s : output!QSlice
+{
+	o.name =  i.comment; 
+	for (i in seq_qbits) {
+		o.qbits.add(i);
+		var ds = new output!DataStore;
+		ds.name = "bit_"+i.id;
+		o.datastore.add(ds);
+		var m = new output!Measure;
+		m.output = ds;
+		m.measuredqubit=i;
+		s.includes.add(m);
+	}
+	measure_qslice = s;
+	//seq_qbits.forEach(i | o.qbits.add(i) );
+}
+
+rule Clause 
+	transform i : input!Clause
+	to q : output!Qbit
+	   , s_or : output!QSlice
+	   , or_op : output!ControlledOperation
+	   , c_n : output!NOT
+	   , s_undo : output!QSlice
+	   , n : output!NOT
+	   , c_item : output!ControlItem
+	   , barrier : output!Barrier
+{	
+	
+	q.id = "s_"+scratch_int;
+	scratch_int++;
+	the_circuit().qbits.add(q);
+	c_item.controlqbit = q;
+	scratch_qbits.add(c_item);
+	
+	// do
+	if (i.not_all_atoms_negated()) {
+		var s_do : output!QSlice = new output!QSlice;
+		s_do.sequencenumber = seq_slice;
+		seq_slice++;
+		i.atoms.select(i | not i.isNegated).
+		  forEach(i | s_do.includes.add(i.gen_not()) );
+		sat_circuit.add(s_do);
+	}
+	
+	// control-not
+	s_or.sequencenumber = seq_slice;
+	seq_slice++;
+	s_or.includes.add(or_op);
+	or_op.targets.add(c_n);
+	c_n.qbit=q;
+	i.atoms.forEach(i | or_op.controls.add(i.gen_controlIt()) );
+	sat_circuit.add(s_or);
+	
+	// undo
+	s_undo.sequencenumber = seq_slice;
+	seq_slice++;
+	i.atoms.select(i | not i.isNegated).
+		  forEach(i | s_undo.includes.add(i.gen_not()) );
+	n.qbit=q;
+	s_undo.includes.add(n);
+	sat_circuit.add(s_undo);
+	sat_circuit.add(barrier);	
+}
+
+
+operation grover_mirror() : Bag {
+	var tmp : Bag;
+	var hadamards1 = hadamard_input_qbits();
+	hadamards1.sequencenumber = seq_slice;
+	seq_slice++;
+	
+	var nots1 = new output!QSlice;
+	nots1.sequencenumber = seq_slice;
+	seq_slice++;
+	var qbits = gen_qubits ();
+	for (i  in qbits) {
+		var not_gate = new output!NOT;
+		not_gate.qbit = i;
+		nots1.includes.add(not_gate);
+	}
+	
+	var flip = new output!QSlice;
+	var or_op = new output!ControlledOperation;
+	flip.includes.add(or_op);
+	flip.sequencenumber = seq_slice;
+	seq_slice++;
+	for (i  in qbits.select(i | i != qbits.last())) {
+		var cItem = new output!ControlItem;
+		cItem.controlqbit = i;
+		or_op.controls.add(cItem);
+	}
+	var z = new output!Z;
+	z.qbit = qbits.last();
+	or_op.targets.add(z);
+	
+	
+	var nots2 = emfTools.ecoreutil.copy(nots1);
+	//nots2.sequencenumber = seq_slice;
+	seq_slice++;
+	
+	var hadamards2 = hadamard_input_qbits();
+	hadamards2.sequencenumber = seq_slice;
+	seq_slice++;
+	
+	tmp.add(hadamards1);
+	tmp.add(nots1);
+	tmp.add(flip);
+	tmp.add(nots2);
+	tmp.add(hadamards2);
+	return tmp;
+}
+
+
+post {	
+	the_circuit().has.add(hadamard_input_qbits());
+	the_circuit().has.add(new output!Barrier);
+	
+	var grover_it : Bag;
+	
+	sat_circuit.forEach(i | grover_it.add(i));
+	
+	grover_it.add (phase_flip());
+	
+	var sat_circuit_copy = emfTools.ecoreutil.copyAll(sat_circuit);
+	sat_circuit_copy.invert().forEach(i | grover_it.add(i));
+	
+	grover_it.add(new output!Barrier);
+	var grover = grover_mirror();
+	grover.forEach(i | grover_it.add(i));
+	
+	var repetitions : Integer = System.user.promptInteger("Replications of Grover iteration? ", 1);
+	var j:Integer=0;
+	while (j<repetitions-1) {
+		var tmp = emfTools.ecoreutil.copyAll(grover_it);
+		j=j+1;
+		tmp.forEach(i | the_circuit().has.add(i));
+		the_circuit().has.add(new output!Barrier);
+	}
+	grover_it.forEach(i | the_circuit().has.add(i));
+	the_circuit().has.add(new output!Barrier);
+	
+	measure_qslice.sequencenumber = seq_slice;
+	seq_slice++;
+	the_circuit().has.add(measure_qslice);
+	delete scratch_qbits.last();
+	check_output_model(repetitions);
+}	
+
+
+operation check_output_model(repetitions:Integer) {
+	var n_clauses_model = input!Clause.allOfType.size();
+	var n_not_negated_atoms_model = input!Atom.allOfType.count(i | not i.isNegated);
+	var n_vbles_model = seq_qbits.size();
+	
+	var n_qbits_eq = n_clauses_model + n_vbles_model;
+	var n_cx_eq = 2*n_clauses_model*repetitions;
+	var n_x_eq = 2*(n_vbles_model + n_clauses_model + 2*n_not_negated_atoms_model)*repetitions;
+	var n_cz_eq = 2*repetitions;
+	var n_h_eq = (1+2*repetitions)*n_vbles_model;
+	var elements_to_be_generated : String = "EQUATION => Qbits: "+n_qbits_eq+", NOT: "+n_x_eq+", C-NOT:"+n_cx_eq;
+	elements_to_be_generated += ", CZ: "+n_cz_eq+", H:"+n_h_eq;
+	elements_to_be_generated.println();
+	var n_elements_eq  = Bag {n_qbits_eq, n_cx_eq, n_x_eq, n_cz_eq, n_h_eq};
+
+	var n_qbits_model = output!Qbit.allOfType.size();	
+	var n_cx_model = output!ControlledOperation.allOfType.count(i | i.targets[0].isTypeOf(output!NOT));
+	var n_x_model = output!NOT.allOfType.size()-n_cx_model;
+	var n_cz_model = output!ControlledOperation.allOfType.count(i | i.targets[0].isTypeOf(output!Z));
+	var n_h_model = output!H.allOfType.size();
+	var elements_generated : String = "GENERATED => Qbits: "+n_qbits_model+", NOT: "+n_x_model+", C-NOT:"+n_cx_model;
+	elements_generated += ", CZ: "+n_cz_model+", H:"+n_h_model;
+	elements_generated.println();	
+	var n_elements_generated  = Bag {n_qbits_model, n_cx_model, n_x_model, n_cz_model, n_h_model};
+	
+	if (n_elements_eq == n_elements_generated) "Transformation correctly generated".println();
+	else "Transformation NOT correctly generated".println();
+	
+}

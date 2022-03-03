@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logical_cnf:LogicalEquation_CNF
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:logical_cnf="http://dsie.upct.es/lsi/logical_cnf"
+    comment="PQC SAT 3 solution">
+  <clauses>
+    <atoms name="1"/>
+    <atoms name="2"/>
+  </clauses>
+  <clauses>
+    <atoms isNegated="true"
+        name="1"/>
+    <atoms name="3"/>
+  </clauses>
+  <clauses>
+    <atoms isNegated="true"
+        name="2"/>
+    <atoms name="3"/>
+  </clauses>
+</logical_cnf:LogicalEquation_CNF>

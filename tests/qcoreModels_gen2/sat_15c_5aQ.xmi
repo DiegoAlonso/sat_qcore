@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="ASCII"?>
+<qcore:Circuit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qcore="http://dsie.upct.es/lsi/qcore" xsi:schemaLocation="http://dsie.upct.es/lsi/qcore ../../cnfQcore/mmodels/qcore.ecore">
+  <qbits id="1"/>
+  <qbits id="2"/>
+  <qbits id="3"/>
+  <qbits id="4"/>
+  <qbits id="5"/>
+  <qbits id="s_1"/>
+  <qbits id="s_2"/>
+  <qbits id="s_3"/>
+  <qbits id="s_4"/>
+  <qbits id="s_5"/>
+  <qbits id="s_6"/>
+  <qbits id="s_7"/>
+  <qbits id="s_8"/>
+  <qbits id="s_9"/>
+  <qbits id="s_10"/>
+  <qbits id="s_11"/>
+  <qbits id="s_12"/>
+  <qbits id="s_13"/>
+  <qbits id="s_14"/>
+  <qbits id="s_15"/>
+  <datastore name="bit_1"/>
+  <datastore name="bit_2"/>
+  <datastore name="bit_3"/>
+  <datastore name="bit_4"/>
+  <datastore name="bit_5"/>
+  <has xsi:type="qcore:QSlice">
+    <includes xsi:type="qcore:H" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="1">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="2">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.5"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="3">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.5"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="4">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="5">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.6"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="6">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.6"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="7">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="8">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.7"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="9">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.7"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="10">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="11">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.8"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="12">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.8"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="13">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="14">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.9"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="15">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.9"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="16">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="17">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.10"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="18">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.10"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="19">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="20">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.11"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="21">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.11"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="22">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="23">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.12"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="24">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.12"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="25">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="26">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.13"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="27">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.13"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="28">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="29">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.14"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="30">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.14"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="31">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="32">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.15"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="33">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.15"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="34">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="35">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.16"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="36">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.16"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="37">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="38">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.17"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="39">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.17"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="40">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="41">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.18"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="42">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.18"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="43">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="44">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.19"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="45">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.19"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="46">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:Z" qbit="//@qbits.19"/>
+      <controls controlqbit="//@qbits.5"/>
+      <controls controlqbit="//@qbits.6"/>
+      <controls controlqbit="//@qbits.7"/>
+      <controls controlqbit="//@qbits.8"/>
+      <controls controlqbit="//@qbits.9"/>
+      <controls controlqbit="//@qbits.10"/>
+      <controls controlqbit="//@qbits.11"/>
+      <controls controlqbit="//@qbits.12"/>
+      <controls controlqbit="//@qbits.13"/>
+      <controls controlqbit="//@qbits.14"/>
+      <controls controlqbit="//@qbits.15"/>
+      <controls controlqbit="//@qbits.16"/>
+      <controls controlqbit="//@qbits.17"/>
+      <controls controlqbit="//@qbits.18"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="45">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.19"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="44">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.19"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="43">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="42">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.18"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="41">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.18"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="40">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="39">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.17"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="38">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.17"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="37">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="36">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.16"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="35">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.16"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="34">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="33">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.15"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="32">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.15"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="31">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="30">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.14"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="29">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.14"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="28">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="27">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.13"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="26">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.13"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="25">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="24">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.12"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="23">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.12"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="22">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="21">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.11"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="20">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.11"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="19">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="18">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.10"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="17">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.10"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="16">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="15">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.9"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="14">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.9"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="13">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="12">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.8"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="11">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.8"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="10">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="9">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.7"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="8">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.7"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+      <controls controlqbit="//@qbits.4"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="7">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="6">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.6"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="5">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.6"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="4">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="3">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.5"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="2">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:NOT" qbit="//@qbits.5"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="1">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="47">
+    <includes xsi:type="qcore:H" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="48">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="49">
+    <includes xsi:type="qcore:ControlledOperation">
+      <targets xsi:type="qcore:Z" qbit="//@qbits.4"/>
+      <controls controlqbit="//@qbits.0"/>
+      <controls controlqbit="//@qbits.1"/>
+      <controls controlqbit="//@qbits.2"/>
+      <controls controlqbit="//@qbits.3"/>
+    </includes>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="48">
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:NOT" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:QSlice" sequencenumber="51">
+    <includes xsi:type="qcore:H" qbit="//@qbits.0"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.1"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.2"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.3"/>
+    <includes xsi:type="qcore:H" qbit="//@qbits.4"/>
+  </has>
+  <has xsi:type="qcore:Barrier"/>
+  <has xsi:type="qcore:QSlice" sequencenumber="52">
+    <includes xsi:type="qcore:Measure" output="//@datastore.0" measuredqubit="//@qbits.0"/>
+    <includes xsi:type="qcore:Measure" output="//@datastore.1" measuredqubit="//@qbits.1"/>
+    <includes xsi:type="qcore:Measure" output="//@datastore.2" measuredqubit="//@qbits.2"/>
+    <includes xsi:type="qcore:Measure" output="//@datastore.3" measuredqubit="//@qbits.3"/>
+    <includes xsi:type="qcore:Measure" output="//@datastore.4" measuredqubit="//@qbits.4"/>
+  </has>
+</qcore:Circuit>

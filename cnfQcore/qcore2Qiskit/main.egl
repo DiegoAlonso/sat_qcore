@@ -1,0 +1,104 @@
+import numpy as np
+
+# Importing standard Qiskit libraries
+from qiskit import *
+from qiskit.circuit import *
+from qiskit.tools.jupyter import *
+from qiskit.visualization import *
+from ibm_quantum_widgets import *
+from qiskit.providers.aer import QasmSimulator
+from qiskit.circuit.library.standard_gates import XGate,ZGate,HGate 
+
+
+# Loading your IBM Quantum account(s)
+#provider = IBMQ.load_account()
+
+q_reg = QuantumRegister([%=circuit.qbits.size()%], 'q')
+c_reg = ClassicalRegister([%=circuit.datastore.size()%], 'c')
+circuit = QuantumCircuit(q_reg, c_reg)
+
+
+[%for (s in circuit.has) { %]
+	[%if (s.isTypeOf(Barrier)) { %]
+circuit.barrier(q_reg)
+	[%} else { %]
+# Qslice [%=s.sequencenumber%]
+		[%for (g in s.includes) { %]
+[%=g.to_qiskit()%]
+		[%}%]
+	[%}%]
+[%}%]
+
+circuit.draw('mpl')
+
+
+[%if (System.user.confirm("Generate simulator code?")){%]
+from qiskit import Aer
+from qiskit.compiler import transpile
+from qiskit.visualization import plot_histogram
+
+# Use Aer's qasm_simulator
+backend_sim = Aer.get_backend('qasm_simulator')
+
+# Execute the circuit on the qasm simulator.
+# We've set the number of repeats of the circuit
+# to be 1024, which is the default.
+job_sim = backend_sim.run(transpile(circuit, backend_sim), shots=1024)
+
+# Grab the results from the job.
+result_sim = job_sim.result()
+counts = result_sim.get_counts(circuit)
+plot_histogram(counts)
+[%}%]
+
+
+[%
+operation H data() : Bag { 
+   	return Bag {"HGate()", self.qbit.qbit_number()};
+} 
+operation NOT data() : Bag { 
+   	return  Bag {"XGate()", self.qbit.qbit_number()};
+} 
+operation Z data() : Bag { 
+   	return Bag {"ZGate()", self.qbit.qbit_number()};
+}
+operation Qbit qbit_number() : Integer {
+	return circuit.qbits.indexOf(self);
+}
+operation DataStore bit_number() : Integer {
+	return circuit.datastore.indexOf(self);
+}
+%]
+
+
+[% @template
+operation H to_qiskit()  { 
+	var data = self.data();%]
+circuit.append([%=data.first()%],[q_reg[[%=data.second()%]]])
+[%}
+@template
+operation NOT to_qiskit() { 
+    var data = self.data();%]
+circuit.append([%=data.first()%],[q_reg[[%=data.second()%]]])
+[%} 
+@template
+operation Z to_qiskit() { 
+	var data = self.data();%]
+circuit.append([%=data.first()%],[q_reg[[%=data.second()%]]])
+[%}
+@template
+operation ControlledOperation to_qiskit() {
+	var data = self.targets[0].data();
+	var tmp : String;
+	for (i in self.controls) {
+		tmp += "q_reg["+i.controlqbit.qbit_number()+"], ";
+	}%]
+circuit.append([%=data.first()%].control([%=self.controls.size()%]),[[%=tmp%] q_reg[[%=data.second()%]]])
+[%}
+@template
+operation Measure to_qiskit() {%]
+circuit.measure(q_reg[[%=self.measuredqubit.qbit_number()%]], c_reg[[%=self.output.bit_number()%]])
+[%}%]
+
+
+

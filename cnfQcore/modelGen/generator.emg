@@ -1,0 +1,41 @@
+pre {
+	var num_c = 1000;
+	var min_a=30;
+	var num_a=70;
+	var a_names : Sequence;
+	var i=0;
+	while (i<num_a+min_a) {
+		i=i+1;
+		a_names.add(""+i);
+	}
+	var max_a = 0;
+}
+
+$instances 1
+@list circuit
+operation LogicalEquation_CNF create() {
+    self.comment = "Test CNF with "+num_c+" clauses and "+num_a+" atoms";
+}
+
+$instances Sequence {700, num_c}
+operation Clause create() {
+    nextFromList("circuit").clauses.add(self);
+    var reps = min_a + nextInt(num_a);
+    if (max_a<reps) { max_a=reps; } 
+    var the_atoms = nextSample(a_names, reps);
+    the_atoms.forEach (i | self.atoms.add(create_atom(i)));
+}
+
+operation create_atom(name:String) : Atom {
+    var tmp = new Atom;
+    tmp.name=name;
+    tmp.isNegated=nextBoolean();
+    return tmp;
+}
+
+post{
+	var n_clauses = Clause.allOfType.size();
+	var txt = "Test CNF with "+n_clauses+" clauses and between "+min_a +" and "+max_a+" atoms per clause";
+	//LogicalEquation_CNF.allOfType.first().comment = txt;
+	txt.println();
+}

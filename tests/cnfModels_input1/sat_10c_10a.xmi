@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logical_cnf:LogicalEquation_CNF xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:emof="http://schema.omg.org/spec/MOF/2.0/emof.xml" xmlns:logical_cnf="http://dsie.upct.es/lsi/logical_cnf"
+    xmi:id="_0">
+  <clauses xmi:id="_0.@clauses.0">
+    <atoms xmi:id="_0.@clauses.0.@atoms.0" name="1"/>
+    <atoms xmi:id="_0.@clauses.0.@atoms.1" name="2"/>
+    <atoms xmi:id="_0.@clauses.0.@atoms.2" isNegated="true" name="3"/>
+    <atoms xmi:id="_0.@clauses.0.@atoms.3" name="5"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.1">
+    <atoms xmi:id="_0.@clauses.1.@atoms.0" name="6"/>
+    <atoms xmi:id="_0.@clauses.1.@atoms.1" isNegated="true" name="7"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.2">
+    <atoms xmi:id="_0.@clauses.2.@atoms.0" name="7"/>
+    <atoms xmi:id="_0.@clauses.2.@atoms.1" name="8"/>
+    <atoms xmi:id="_0.@clauses.2.@atoms.2" name="9"/>
+    <atoms xmi:id="_0.@clauses.2.@atoms.3" isNegated="true" name="10"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.3">
+    <atoms xmi:id="_0.@clauses.3.@atoms.0" name="1"/>
+    <atoms xmi:id="_0.@clauses.3.@atoms.1" name="3"/>
+    <atoms xmi:id="_0.@clauses.3.@atoms.2" name="5"/>
+    <atoms xmi:id="_0.@clauses.3.@atoms.3" name="7"/>
+    <atoms xmi:id="_0.@clauses.3.@atoms.4" name="9"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.4">
+    <atoms xmi:id="_0.@clauses.4.@atoms.0" name="2"/>
+    <atoms xmi:id="_0.@clauses.4.@atoms.1" name="4"/>
+    <atoms xmi:id="_0.@clauses.4.@atoms.2" name="6"/>
+    <atoms xmi:id="_0.@clauses.4.@atoms.3" isNegated="true" name="8"/>
+    <atoms xmi:id="_0.@clauses.4.@atoms.3" name="10"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.5">
+    <atoms xmi:id="_0.@clauses.5.@atoms.0" isNegated="true" name="1"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.1" name="2"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.2" name="3"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.3" name="4"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.4" isNegated="true" name="5"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.5" name="8"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.5" isNegated="true" name="9"/>
+    <atoms xmi:id="_0.@clauses.5.@atoms.5" isNegated="true" name="10"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.6">
+    <atoms xmi:id="_0.@clauses.6.@atoms.0" name="2"/>
+    <atoms xmi:id="_0.@clauses.6.@atoms.1" isNegated="true" name="3"/>
+    <atoms xmi:id="_0.@clauses.6.@atoms.2" name="4"/>
+    <atoms xmi:id="_0.@clauses.6.@atoms.3" isNegated="true" name="6"/>
+    <atoms xmi:id="_0.@clauses.6.@atoms.4" isNegated="true" name="8"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.7">
+    <atoms xmi:id="_0.@clauses.7.@atoms.0" name="3"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.1" name="4"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.2" isNegated="true" name="5"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.3" name="7"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.4" isNegated="true" name="8"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.4" name="9"/>
+    <atoms xmi:id="_0.@clauses.7.@atoms.4" isNegated="true" name="10"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.8">
+    <atoms xmi:id="_0.@clauses.8.@atoms.0" isNegated="true" name="1"/>
+    <atoms xmi:id="_0.@clauses.8.@atoms.1" name="3"/>
+    <atoms xmi:id="_0.@clauses.8.@atoms.2" name="8"/>
+    <atoms xmi:id="_0.@clauses.8.@atoms.3" name="9"/>
+    <atoms xmi:id="_0.@clauses.8.@atoms.4" name="10"/>
+  </clauses>
+  <clauses xmi:id="_0.@clauses.9">
+    <atoms xmi:id="_0.@clauses.9.@atoms.0" name="2"/>
+    <atoms xmi:id="_0.@clauses.9.@atoms.1" isNegated="true" name="4"/>
+    <atoms xmi:id="_0.@clauses.9.@atoms.2" name="6"/>
+    <atoms xmi:id="_0.@clauses.9.@atoms.3" isNegated="true" name="7"/>
+    <atoms xmi:id="_0.@clauses.9.@atoms.4" name="8"/>
+    <atoms xmi:id="_0.@clauses.9.@atoms.5" isNegated="true" name="10"/>
+  </clauses>
+</logical_cnf:LogicalEquation_CNF>
